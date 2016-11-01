@@ -8,4 +8,4 @@ This sample app is built with [Next.js](https://github.com/zeit/next.js)
 
 # Running the app
 
-    $ npm run dev
+    $ yarn run dev

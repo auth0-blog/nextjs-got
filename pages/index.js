@@ -13,7 +13,7 @@ export default class extends React.Component {
     return (
       <div>
       <div className={style(styles.header)}>
-        <h3> THE REVELATION OF GAME OF THRONES' CHARACTERS </h3>
+        <h3> NEXTHRONE - THE REVELATION OF GAME OF THRONES' CHARACTERS </h3>
       </div>
       <table className={style(styles.table)}>
         <thead>

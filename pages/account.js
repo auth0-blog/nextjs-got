@@ -9,7 +9,7 @@ export default ({ url: { query: { id } } }) => {
   return (
     <div className={style(styles.main)}>
       <div className={style(styles.header)}>
-        <h3> THE REVELATION OF GAME OF THRONES' CHARACTERS </h3>
+        <h3> NEXTHRONE - THE REVELATION OF GAME OF THRONES' CHARACTERS </h3>
       </div>
       <div className={style(styles.panel)}>
         <h1 className={style(styles.heading)}>
