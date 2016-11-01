@@ -1,7 +1,6 @@
 import React from 'react'
 import posts from '../data/posts'
 import { style } from 'next/css'
-import css from 'next/css'
 import Link from 'next/link'
 
 export default class extends React.Component {
