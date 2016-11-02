@@ -2,9 +2,10 @@ import React from 'react'
 import posts from '../data/posts'
 import { style } from 'next/css'
 import Link from 'next/link'
+import AuthService from '../utils/AuthService'
 
 export default class extends React.Component {
-  static getInitialProps () {
+  static getInitialProps ({ req, res}) {
     return { posts: posts }
   }
 

@@ -2,8 +2,16 @@ import React from 'react'
 import posts from '../data/posts'
 import { style } from 'next/css'
 import * as  _ from 'lodash'
+import AuthService from '../utils/AuthService'
+
+const auth = new AuthService('gU5eGahGcq1cZsSINsPwt7xDpXaoo1AK', 'unicodeveloper.auth0.com');
 
 export default ({ url: { query: { id } } }) => {
+
+  if (!auth.loggedIn()) {
+    console.log("You are not logged In");
+  }
+
   const item =  _.find(posts, { id: id })
 
   return (
