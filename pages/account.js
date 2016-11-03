@@ -4,41 +4,51 @@ import { style } from 'next/css'
 import * as  _ from 'lodash'
 import AuthService from '../utils/AuthService'
 
-const auth = new AuthService('gU5eGahGcq1cZsSINsPwt7xDpXaoo1AK', 'unicodeveloper.auth0.com');
+export default class extends React.Component {
 
-export default ({ url: { query: { id } } }) => {
-
-  if (!auth.loggedIn()) {
-    console.log("You are not logged In");
+  componentDidMount() {
+    console.log('mount')
+    this.auth = new AuthService('gU5eGahGcq1cZsSINsPwt7xDpXaoo1AK', 'unicodeveloper.auth0.com');
   }
 
-  const item =  _.find(posts, { id: id })
+  login() {
+    this.auth.login();
+  }
 
-  return (
-    <div className={style(styles.main)}>
-      <div className={style(styles.header)}>
-        <h3> NEXTHRONE - THE REVELATION OF GAME OF THRONES' CHARACTERS </h3>
-      </div>
-      <div className={style(styles.panel)}>
-        <h1 className={style(styles.heading)}>
-          Character: { item.codeName }
-          <br/>
-          <br/>
-          Real Name: { item.realName }
-          <br/>
-          <br/>
-          Brief Description:
-          <br/>
-          <br/>
-          <span> { item.story } </span>
-        </h1>
-      </div>
+  render () {
+    console.log(this.auth);
+    const item =  _.find(posts, { id: this.props.url.query.id })
 
-      <div className={style(styles.singlePhoto)}>
-        <img src={ item.display_src} alt={item.realName} width={500} height={500} />
+    const loginButton = this.auth && this.auth.loggedIn() ? <div>HELLO</div> : <button onClick={this.login.bind(this)}>Login</button>;
+
+    return (
+      <div className={style(styles.main)}>
+        <script src="https://cdn.auth0.com/js/lock/10.5/lock.min.js"></script>
+        <button onClick={this.login.bind(this)} >Login</button>
+        <div className={style(styles.header)}>
+          <h3> NEXTHRONE - THE REVELATION OF GAME OF THRONES' CHARACTERS </h3>
+        </div>
+        <div className={style(styles.panel)}>
+          <h1 className={style(styles.heading)}>
+            Character: { item.codeName }
+            <br/>
+            <br/>
+            Real Name: { item.realName }
+            <br/>
+            <br/>
+            Brief Description:
+            <br/>
+            <br/>
+            <span> { item.story } </span>
+          </h1>
+        </div>
+
+        <div className={style(styles.singlePhoto)}>
+          <img src={ item.display_src} alt={item.realName} width={500} height={500} />
+        </div>
       </div>
-    </div>
-  )
+    )
+  }
 }
 
 
