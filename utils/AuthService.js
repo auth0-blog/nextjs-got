@@ -3,6 +3,9 @@ import React from 'react'
 export default class AuthService {
   constructor(clientId, domain) {
     // Configure Auth0
+    this.clientId = clientId
+    this.domain = domain
+
     this.lock = new Auth0Lock(clientId, domain, {})
     // Add callback for lock `authenticated` event
     this.lock.on('authenticated', this._doAuthentication.bind(this))
@@ -13,6 +16,11 @@ export default class AuthService {
   _doAuthentication(authResult){
     // Saves the user token
     this.setToken(authResult.idToken)
+  }
+
+  getLock() {
+    // An instance of Lock
+    return new Auth0Lock(this.clientId, this.domain, {});
   }
 
   login() {

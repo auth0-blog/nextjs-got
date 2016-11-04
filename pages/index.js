@@ -16,16 +16,21 @@ export default class extends React.Component {
 
   componentDidMount() {
     this.auth = new AuthService('gU5eGahGcq1cZsSINsPwt7xDpXaoo1AK', 'unicodeveloper.auth0.com');
-    console.log("Component mounted", this.auth.loggedIn())
     this.setState({ log: this.auth.loggedIn() })
+    // instance of Lock
+    this.lock = this.auth.getLock();
+    this.lock.on('authenticated', () => {
+      this.setState({ log: this.auth.loggedIn() })
+    });
+
+    console.log("Component mounted", this.auth.loggedIn())
   }
 
   login() {
     this.auth.login();
   }
 
-  render () {
-   console.log("Should update", this.state.log);
+  render() {
 
    const loginButton = this.state.log ? <div>HELLO</div> : <button onClick={this.login.bind(this)}>Login</button>;
 

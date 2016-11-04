@@ -7,24 +7,18 @@ import AuthService from '../utils/AuthService'
 export default class extends React.Component {
 
   componentDidMount() {
-    console.log('mount')
     this.auth = new AuthService('gU5eGahGcq1cZsSINsPwt7xDpXaoo1AK', 'unicodeveloper.auth0.com');
-  }
-
-  login() {
-    this.auth.login();
+    if (!this.auth.loggedIn()) {
+      this.props.url.replaceTo('/')
+    }
   }
 
   render () {
-    console.log(this.auth);
     const item =  _.find(posts, { id: this.props.url.query.id })
-
-    const loginButton = this.auth && this.auth.loggedIn() ? <div>HELLO</div> : <button onClick={this.login.bind(this)}>Login</button>;
 
     return (
       <div className={style(styles.main)}>
         <script src="https://cdn.auth0.com/js/lock/10.5/lock.min.js"></script>
-        <button onClick={this.login.bind(this)} >Login</button>
         <div className={style(styles.header)}>
           <h3> NEXTHRONE - THE REVELATION OF GAME OF THRONES' CHARACTERS </h3>
         </div>
