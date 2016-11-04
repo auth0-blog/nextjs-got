@@ -22,8 +22,6 @@ export default class extends React.Component {
     this.lock.on('authenticated', () => {
       this.setState({ log: this.auth.loggedIn() })
     });
-
-    console.log("Component mounted", this.auth.loggedIn())
   }
 
   login() {
