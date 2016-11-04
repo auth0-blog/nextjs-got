@@ -7,7 +7,7 @@ import AuthService from '../utils/AuthService'
 export default class extends React.Component {
 
   componentDidMount() {
-    this.auth = new AuthService('gU5eGahGcq1cZsSINsPwt7xDpXaoo1AK', 'unicodeveloper.auth0.com');
+    this.auth = new AuthService('_AUTH0_CLIENT_ID_', '_AUTH0_DOMAIN_');
     if (!this.auth.loggedIn()) {
       this.props.url.replaceTo('/')
     }
