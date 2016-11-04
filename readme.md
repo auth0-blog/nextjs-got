@@ -8,7 +8,7 @@ This sample app is built with [Next.js](https://github.com/zeit/next.js). Clone 
 
 # Usage
 
-Replace `_AUTH0_CLIENT_ID_` and `_AUTH0_DOMAIN_`
+Replace `_AUTH0_CLIENT_ID_` and `_AUTH0_DOMAIN_ ` with the client_id and domain from settings part of your Auth0 [dashboard](https://manage.auth0.com/#/clients).
 
 # Running the app
 
