@@ -15,7 +15,7 @@ export default class extends React.Component {
   }
 
   componentDidMount() {
-    this.auth = new AuthService('_AUTH0_CLIENT_ID_', '_AUTH0_DOMAIN');
+    this.auth = new AuthService('_AUTH0_CLIENT_ID_', '_AUTH0_DOMAIN_');
     this.setState({ loggedIn: this.auth.loggedIn() })
     // instance of Lock
     this.lock = this.auth.getLock();
