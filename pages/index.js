@@ -11,16 +11,16 @@ export default class extends React.Component {
 
   constructor(props) {
     super(props)
-    this.state = { log: false }
+    this.state = { loggedIn: false }
   }
 
   componentDidMount() {
     this.auth = new AuthService('gU5eGahGcq1cZsSINsPwt7xDpXaoo1AK', 'unicodeveloper.auth0.com');
-    this.setState({ log: this.auth.loggedIn() })
+    this.setState({ loggedIn: this.auth.loggedIn() })
     // instance of Lock
     this.lock = this.auth.getLock();
     this.lock.on('authenticated', () => {
-      this.setState({ log: this.auth.loggedIn() })
+      this.setState({ loggedIn: this.auth.loggedIn() })
     });
   }
 
@@ -30,7 +30,7 @@ export default class extends React.Component {
 
   render() {
 
-   const loginButton = this.state.log ? <div>HELLO</div> : <button onClick={this.login.bind(this)}>Login</button>;
+   const loginButton = this.state.loggedIn ? <div>HELLO</div> : <button onClick={this.login.bind(this)}>Login</button>;
 
     return (
       <div>
@@ -52,7 +52,7 @@ export default class extends React.Component {
                   <tr key={i}>
                       <td className={style(styles.td)}>{ post.codeName }</td>
                       <td className={style(styles.td)}>
-                        { this.state.log ? <Link href={`/account?id=${post.id}`}>{ post.realName }</Link> : <div>You need to login</div> }
+                        { this.state.loggedIn ? <Link href={`/account?id=${post.id}`}>{ post.realName }</Link> : <div>You need to login</div> }
                       </td>
                   </tr>
               ))
