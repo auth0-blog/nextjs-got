@@ -9,10 +9,31 @@ export default class extends React.Component {
     return { posts: posts }
   }
 
+  constructor(props) {
+    super(props)
+    this.state = { log: false }
+  }
+
+  componentDidMount() {
+    this.auth = new AuthService('gU5eGahGcq1cZsSINsPwt7xDpXaoo1AK', 'unicodeveloper.auth0.com');
+    console.log("Component mounted", this.auth.loggedIn())
+    this.setState({ log: this.auth.loggedIn() })
+  }
+
+  login() {
+    this.auth.login();
+  }
+
   render () {
+   console.log("Should update", this.state.log);
+
+   const loginButton = this.state.log ? <div>HELLO</div> : <button onClick={this.login.bind(this)}>Login</button>;
+
     return (
       <div>
       <div className={style(styles.header)}>
+        <script src="https://cdn.auth0.com/js/lock/10.5/lock.min.js"></script>
+        { loginButton }
         <h3> NEXTHRONE - THE REVELATION OF GAME OF THRONES' CHARACTERS </h3>
       </div>
       <table className={style(styles.table)}>
@@ -28,7 +49,7 @@ export default class extends React.Component {
                   <tr key={i}>
                       <td className={style(styles.td)}>{ post.codeName }</td>
                       <td className={style(styles.td)}>
-                        <Link href={`/account?id=${post.id}`}>{ post.realName }</Link>
+                        { this.state.log ? <Link href={`/account?id=${post.id}`}>{ post.realName }</Link> : <div>You need to login</div> }
                       </td>
                   </tr>
               ))
