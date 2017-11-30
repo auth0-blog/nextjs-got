@@ -1,5 +1,6 @@
 import React from 'react'
 import posts from '../data/posts'
+import settings from '../data/settings'
 import { style } from 'next/css'
 import * as  _ from 'lodash'
 import AuthService from '../utils/AuthService'
@@ -7,18 +8,18 @@ import AuthService from '../utils/AuthService'
 export default class extends React.Component {
 
   componentDidMount() {
-    this.auth = new AuthService('_AUTH0_CLIENT_ID_', '_AUTH0_DOMAIN_');
+    this.auth = new AuthService(settings.clientId, settings.domain);
     if (!this.auth.loggedIn()) {
-      this.props.url.replaceTo('/')
+      this.props.url.replaceTo('/');
     }
   }
 
   render () {
-    const item =  _.find(posts, { id: this.props.url.query.id })
+    const item =  _.find(posts, { id: this.props.url.query.id });
 
     return (
       <div className={style(styles.main)}>
-        <script src="https://cdn.auth0.com/js/lock/10.5/lock.min.js"></script>
+        <script src="http://cdn.auth0.com/js/auth0/9.0.0-beta.7/auth0.min.js"></script>
         <div className={style(styles.header)}>
           <h3> NEXTHRONE - THE REVELATION OF GAME OF THRONES' CHARACTERS </h3>
         </div>
