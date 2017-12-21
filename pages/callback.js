@@ -12,6 +12,6 @@ export default class extends React.Component {
   }
 
   render () {
-    return <script src="http://cdn.auth0.com/js/auth0/9.0.0-beta.7/auth0.min.js"></script>;
+    return <script src="http://cdn.auth0.com/js/auth0/9.0.0/auth0.min.js"></script>;
   }
 }
