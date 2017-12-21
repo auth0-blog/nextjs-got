@@ -34,7 +34,7 @@ export default class extends React.Component {
     return (
       <div>
       <div className={style(styles.header)}>
-        <script src="http://cdn.auth0.com/js/auth0/9.0.0/auth0.min.js"></script>
+        <script src="https://cdn.auth0.com/js/auth0/9.0.0/auth0.min.js"></script>
         { loginButton }
         <h3> NEXTHRONE - THE REVELATION OF GAME OF THRONES' CHARACTERS </h3>
       </div>
